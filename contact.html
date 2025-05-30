@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us – Smile Studios</title>
+  <!-- fontawesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -11,42 +12,22 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-
   <style>
-    /* ⚙️ copy these from your index.html */
-    html, body {
-      margin: 0; padding: 0;
-      width: 100%; height: 100%;
-      background: #000; color: #fff;
-      overflow: hidden;
-      font-family: 'Roboto', sans-serif;
-    }
-    #particles-js {
-      position: absolute;
-      width: 100%; height: 100%;
-      background: #000;
-      background-size: cover;
-      background-position: 50% 50%;
-    }
-    .nav-container { /* etc – your nav CSS */ }
-    .button-container-1, .button-container-2 { /* … */ }
-    /* all the rest of your <style> block from index.html */
-    /* … */
-    .content {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1; text-align: center;
-      padding: 0 20px;
-    }
-    /* if you’re using form styling in index.html, copy that here too */
+    /* — paste your entire <style> from index.html here — */
+    /* it must include: 
+         - html, body rules
+         - #particles-js
+         - nav-container + button-container-* + mask-animation
+         - .split-text-container, .text-part, keyframes slide-in-left/right
+         - .motto + keyframes fade-in-up
+         - btn-3d, social styles, etc.
+    */
   </style>
 </head>
 <body>
-  <!-- particles canvas -->
   <div id="particles-js"></div>
 
-  <!-- nav buttons -->
+  <!-- nav buttons (will animate in after title) -->
   <div class="nav-container">
     <div class="button-container-1">
       <button onclick="window.location.href='index.html'">home page</button>
@@ -56,34 +37,76 @@
     </div>
   </div>
 
-  <!-- your contact form/content -->
+  <!-- main content -->
   <div class="content">
-    <h1>get in touch</h1>
-    <p>have questions or ideas? drop us a line below.</p>
-    <form action="mailto:hello@smilestudios.com" method="post" enctype="text/plain" style="max-width:400px;margin:2rem auto;text-align:left;">
-      <!-- form fields… -->
+    <!-- slide-in heading -->
+    <h1 class="split-text-container">
+      <span class="text-part left">get in</span>
+      <span class="text-part right">touch!</span>
+    </h1>
+    <!-- fade-in subheading -->
+    <p class="motto">
+      have questions or ideas or just need to contact us? 
+      fill out the form below to get in touch.
+    </p>
+
+    <!-- form -->
+    <form action="mailto:hello@smilestudios.com" 
+          method="post" 
+          enctype="text/plain"
+          style="max-width:400px; margin:2rem auto; text-align:left;">
+      <label for="email">your email</label><br/>
+      <input type="email" id="email" name="email"
+             style="width:100%; padding:.5rem; margin-bottom:1rem;"
+             required /><br/>
+
+      <label for="subject">subject</label><br/>
+      <input type="text" id="subject" name="subject"
+             style="width:100%; padding:.5rem; margin-bottom:1rem;"
+             required /><br/>
+
+      <label for="message">message</label><br/>
+      <textarea id="message" name="message" rows="5"
+                style="width:100%; padding:.5rem; margin-bottom:1rem;"
+                required></textarea><br/>
+
+      <button type="submit"
+              style="padding:.75rem 1.5rem; border:none; background:#03a9f4;
+                     color:#fff; border-radius:4px; cursor:pointer;">
+        send
+      </button>
     </form>
   </div>
 
-  <!-- particles.js library -->
+  <!-- particles.js lib -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    /* copy your entire particlesJS init from index.html here */
+    /* — copy your exact particlesJS init from index.html here — */
     particlesJS('particles-js', {
       "particles": {
         "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
         "color": { "value": "#ffffff" },
-        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" }
+        },
         "opacity": { "value": 0.5, "random": false },
         "size": { "value": 3, "random": true },
         "line_linked": {
-          "enable": true, "distance": 150,
-          "color": "#ffffff", "opacity": 0.4, "width": 1
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
         },
         "move": {
-          "enable": true, "speed": 6,
-          "direction": "none", "random": false,
-          "straight": false, "out_mode": "out", "bounce": false
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
         }
       },
       "interactivity": {
