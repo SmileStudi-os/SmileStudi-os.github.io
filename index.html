@@ -125,13 +125,12 @@
     a.btn-3d span:nth-child(3) { transform: rotateX(180deg) translateZ(25px); }
     a.btn-3d span:nth-child(4) { transform: rotateX(90deg) translateZ(25px); }
 
-    /* social-icon hover‐reveal - FIXED */
+    /* social-icon hover‐reveal - Discord only */
     ul.social {
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
-      gap: 30px;
     }
     ul.social li {
       position: relative;
@@ -141,47 +140,28 @@
     }
     ul.social li a {
       text-decoration: none;
-      color: #666;  /* Changed from #222 to make it more visible on black background */
+      color: #666;
       font-size: 3rem;
       display: inline-block;
-      position: relative;  /* Added to contain the ::before element */
+      position: relative;
     }
     ul.social li a::before {
       font-family: "FontAwesome";
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;  /* Added to ensure full width coverage */
+      right: 0;
       font-size: 3rem;
       height: 0;
       overflow: hidden;
       transition: height .5s ease-in-out;
-      background: #000;  /* Added black background to cover the grey icon */
-      display: flex;  /* Added to center the icon */
-      align-items: center;  /* Added to center the icon */
-      justify-content: center;  /* Added to center the icon */
-    }
-    ul.social li:nth-child(1) a::before {
-      content: "\f16d";              /* instagram */
-      background-image: linear-gradient(45deg,
-        #f09433 0%,#e6683c 25%,#dc2743 50%,
-        #cc2366 75%,#bc1888 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;  /* Added standard property */
-      border-bottom: 4px solid #dc2743;
-    }
-    ul.social li:nth-child(2) a::before {
-      content: "\f232";              /* whatsapp */
-      color: #25D366;
-      border-bottom: 4px solid #25D366;
-      background: #000;  /* Ensure background covers grey icon */
-    }
-    ul.social li:nth-child(3) a::before {
-      content: "\f392";              /* discord */
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      content: "\f392";
       color: #5865F2;
       border-bottom: 4px solid #5865F2;
-      background: #000;  /* Ensure background covers grey icon */
     }
     ul.social li:hover a::before {
       height: 100%;
@@ -197,17 +177,74 @@
     </h1>
     <p class="motto">where creativity meets innovation.</p>
 
-    <!-- social icons -->
+    <!-- Discord icon only -->
     <ul class="social">
-      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-      <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-      <li><a href="#"><i class="fab fa-discord"></i></a></li>
+      <li><a href="https://discord.gg/6jGB9nqkgR" target="_blank"><i class="fab fa-discord"></i></a></li>
     </ul>
   </div>
 
-  <script src="particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    particlesJS.load('particles-js','particles.json',function(){});
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        }
+      },
+      "retina_detect": true
+    });
   </script>
 </body>
 </html>
