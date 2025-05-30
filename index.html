@@ -96,70 +96,6 @@
         transform: translateY(0); 
       }
     }
-    .dropping-texts {
-      display: inline-block;
-      width: 200px;
-      text-align: left;
-      height: 1.2rem;
-      vertical-align: -2px;
-    }
-    .dropping-texts > span {
-      font-size: 0px;
-      opacity: 0;
-      margin-left: -30px;
-      position: absolute;
-      font-weight: 300;
-      color: #ccc;
-    }
-    .dropping-texts > span:nth-child(1) {
-      animation: roll 8s linear infinite 3s;
-    }
-    .dropping-texts > span:nth-child(2) {
-      animation: roll 8s linear infinite 5s;
-    }
-    .dropping-texts > span:nth-child(3) {
-      animation: roll 8s linear infinite 7s;
-    }
-    @keyframes roll {
-      0% {
-        font-size: 0px;
-        opacity: 0;
-        margin-left: -30px;
-        margin-top: 0px;
-        transform: rotate(-25deg);
-      }
-      3% {
-        opacity: 1;
-        transform: rotate(0deg);
-      }
-      6% {
-        font-size: 1.2rem;
-        opacity: 1;
-        margin-left: 0px;
-        margin-top: 0px;
-      }
-      25% {
-        font-size: 1.2rem;
-        opacity: 1;
-        margin-left: 0px;
-        margin-top: 0px;
-        transform: rotate(0deg);
-      }
-      31% {
-        font-size: 0px;
-        opacity: 0.5;
-        margin-left: 20px;
-        margin-top: 50px;
-        transform: rotate(15deg);
-      }
-      100% {
-        font-size: 0px;
-        opacity: 0;
-        margin-left: -30px;
-        margin-top: 0px;
-        transform: rotate(15deg);
-      }
-    }
     a.btn-3d {
       position: relative;
       display: inline-block;
@@ -271,11 +207,7 @@
       <span class="text-part left">smile</span>
       <span class="text-part right">studios</span>
     </h1>
-    <p class="motto">where creativity meets <span class="dropping-texts">
-      <span>innovation.</span>
-      <span>development.</span>
-      <span>roblox.</span>
-    </span></p>
+    <p class="motto">where creativity meets innovation.</p>
 
     <!-- Discord icon only -->
     <ul class="social">
