@@ -13,10 +13,10 @@ html,body{margin:0;padding:0;width:100%;height:100%;background:#000;color:#fff;o
 .text-part{display:inline-block;position:relative;animation-duration:2s;animation-timing-function:ease-out;animation-fill-mode:forwards;}
 .text-part.left{transform:translateX(-200%);animation-name:slide-in-left;}
 .text-part.right{transform:translateX(200%);animation-name:slide-in-right;animation-delay:.3s;}
-@keyframes slide-in-left{from{transform:translateX(-200%);}to{transform:translateX(0);}}
-@keyframes slide-in-right{from{transform:translateX(200%);}to{transform:translateX(0);}}
-.motto{font-size:1.2rem;font-weight:300;margin:0.5rem 0;color:#ccc;}
-a.btn-3d{position:relative;display:inline-block;width:150px;height:50px;margin-top:1rem;transform-style:preserve-3d;transform:perspective(1000px) rotateX(0deg);transition:transform .6s;text-decoration:none;}
+@keyframes slide-in-left{from{transform:translateX(-200%);}to{transform:translateX(0);} }
+@keyframes slide-in-right{from{transform:translateX(200%);}to{transform:translateX(0);} }
+.motto{font-size:1.2rem;font-weight:300;color:#ccc;margin:0;margin-top:0.2rem;}
+a.btn-3d{position:relative;display:inline-block;width:150px;height:50px;margin-top:1.5rem;transform-style:preserve-3d;transform:perspective(1000px) rotateX(0deg);transition:transform .6s;text-decoration:none;}
 a.btn-3d:hover{transform:perspective(1000px) rotateX(360deg);}
 a.btn-3d span{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.9);color:#000;text-transform:uppercase;font-size:.9em;letter-spacing:1px;border:2px solid #000;box-sizing:border-box;box-shadow:inset 0 20px 50px rgba(0,0,0,.2);transition:background .3s,color .3s;}
 a.btn-3d:hover span{background:rgba(3,169,244,.8);color:#fff;}
