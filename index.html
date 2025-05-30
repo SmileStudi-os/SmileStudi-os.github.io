@@ -127,14 +127,16 @@
 
     /* social-icon hover‐reveal - FIXED */
     ul.social {
-      margin-top: 2rem;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
+      gap: 30px;
     }
     ul.social li {
       position: relative;
       list-style: none;
-      margin: 0 15px;
+      margin: 0;
       cursor: pointer;
     }
     ul.social li a {
@@ -176,9 +178,9 @@
       background: #000;  /* Ensure background covers grey icon */
     }
     ul.social li:nth-child(3) a::before {
-      content: "\f099";              /* twitter */
-      color: #1DA1F2;
-      border-bottom: 4px solid #1DA1F2;
+      content: "\f392";              /* discord */
+      color: #5865F2;
+      border-bottom: 4px solid #5865F2;
       background: #000;  /* Ensure background covers grey icon */
     }
     ul.social li:hover a::before {
@@ -199,7 +201,7 @@
     <ul class="social">
       <li><a href="#"><i class="fab fa-instagram"></i></a></li>
       <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fab fa-discord"></i></a></li>
     </ul>
   </div>
 
