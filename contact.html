@@ -12,76 +12,164 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
+
   <style>
-    /* — paste your entire <style> from index.html here — */
-    /* it must include: 
-         - html, body rules
-         - #particles-js
-         - nav-container + button-container-* + mask-animation
-         - .split-text-container, .text-part, keyframes slide-in-left/right
-         - .motto + keyframes fade-in-up
-         - btn-3d, social styles, etc.
-    */
+    /* — global & particles — */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: #000;
+      color: #fff;
+      overflow-y: auto;        /* allow scrolling */
+      font-family: 'Roboto', sans-serif;
+    }
+    #particles-js {
+      position: fixed;         /* fill screen */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;             /* behind everything */
+    }
+
+    /* — nav buttons — */
+    .nav-container {
+      position: absolute;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1rem;
+      z-index: 1;
+    }
+    .nav-container button {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid #fff;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .nav-container button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* — main content & form — */
+    .content {
+      position: relative;
+      margin: 6rem auto 4rem;
+      max-width: 480px;
+      padding: 2rem;
+      background: rgba(0,0,0,0.6);
+      border-radius: 8px;
+      text-align: center;
+      z-index: 1;
+    }
+    .content h1 {
+      font-size: 2.75rem;
+      margin-bottom: 0.5rem;
+      animation: slide-in-down 0.6s ease-out both;
+    }
+    .content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      animation: fade-in-up 0.6s ease-out 0.4s both;
+    }
+    form {
+      text-align: left;
+    }
+    form label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    form button {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      background: #03a9f4;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: #0288d1;
+    }
+
+    /* — any additional CSS from your index.html — */
+    /* mask-animation, split-text-container, .text-part, btn-3d, social styles, etc. */
+    /* … */
+
+    /* — simple keyframes — */
+    @keyframes slide-in-down {
+      0% {
+        transform: translateY(-60px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fade-in-up {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- particles background -->
   <div id="particles-js"></div>
 
-  <!-- nav buttons (will animate in after title) -->
+  <!-- nav -->
   <div class="nav-container">
-    <div class="button-container-1">
-      <button onclick="window.location.href='index.html'">home page</button>
-    </div>
-    <div class="button-container-2">
-      <button onclick="window.location.href='contact.html'">contact us</button>
-    </div>
+    <button onclick="location.href='index.html'">home page</button>
+    <button onclick="location.href='contact.html'">contact us</button>
   </div>
 
-  <!-- main content -->
+  <!-- content -->
   <div class="content">
-    <!-- slide-in heading -->
-    <h1 class="split-text-container">
-      <span class="text-part left">get in</span>
-      <span class="text-part right">touch!</span>
-    </h1>
-    <!-- fade-in subheading -->
-    <p class="motto">
-      have questions or ideas or just need to contact us? 
-      fill out the form below to get in touch.
-    </p>
+    <h1>get in touch</h1>
+    <p>have questions or ideas? drop us a line below.</p>
+    <form action="mailto:hello@smilestudios.com" method="post" enctype="text/plain">
+      <label for="email">your email</label>
+      <input type="email" id="email" name="email" required />
 
-    <!-- form -->
-    <form action="mailto:hello@smilestudios.com" 
-          method="post" 
-          enctype="text/plain"
-          style="max-width:400px; margin:2rem auto; text-align:left;">
-      <label for="email">your email</label><br/>
-      <input type="email" id="email" name="email"
-             style="width:100%; padding:.5rem; margin-bottom:1rem;"
-             required /><br/>
+      <label for="subject">subject</label>
+      <input type="text" id="subject" name="subject" required />
 
-      <label for="subject">subject</label><br/>
-      <input type="text" id="subject" name="subject"
-             style="width:100%; padding:.5rem; margin-bottom:1rem;"
-             required /><br/>
+      <label for="message">message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
 
-      <label for="message">message</label><br/>
-      <textarea id="message" name="message" rows="5"
-                style="width:100%; padding:.5rem; margin-bottom:1rem;"
-                required></textarea><br/>
-
-      <button type="submit"
-              style="padding:.75rem 1.5rem; border:none; background:#03a9f4;
-                     color:#fff; border-radius:4px; cursor:pointer;">
-        send
-      </button>
+      <button type="submit">send</button>
     </form>
   </div>
 
-  <!-- particles.js lib -->
+  <!-- particles.js lib & init -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    /* — copy your exact particlesJS init from index.html here — */
     particlesJS('particles-js', {
       "particles": {
         "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
