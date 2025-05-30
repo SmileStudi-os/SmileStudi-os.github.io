@@ -124,7 +124,7 @@
     a.btn-3d span:nth-child(3) { transform: rotateX(180deg) translateZ(25px); }
     a.btn-3d span:nth-child(4) { transform: rotateX(90deg) translateZ(25px); }
 
-    /* social-icon hover‐reveal */
+    /* social-icon hover‐reveal - FIXED */
     ul.social {
       margin-top: 2rem;
       display: flex;
@@ -138,19 +138,25 @@
     }
     ul.social li a {
       text-decoration: none;
-      color: #222;
+      color: #666;  /* Changed from #222 to make it more visible on black background */
       font-size: 3rem;
       display: inline-block;
+      position: relative;  /* Added to contain the ::before element */
     }
     ul.social li a::before {
       font-family: "FontAwesome";
       position: absolute;
       top: 0;
       left: 0;
+      right: 0;  /* Added to ensure full width coverage */
       font-size: 3rem;
       height: 0;
       overflow: hidden;
       transition: height .5s ease-in-out;
+      background: #000;  /* Added black background to cover the grey icon */
+      display: flex;  /* Added to center the icon */
+      align-items: center;  /* Added to center the icon */
+      justify-content: center;  /* Added to center the icon */
     }
     ul.social li:nth-child(1) a::before {
       content: "\f16d";              /* instagram */
@@ -159,17 +165,20 @@
         #cc2366 75%,#bc1888 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;  /* Added standard property */
       border-bottom: 4px solid #dc2743;
     }
     ul.social li:nth-child(2) a::before {
       content: "\f232";              /* whatsapp */
       color: #25D366;
       border-bottom: 4px solid #25D366;
+      background: #000;  /* Ensure background covers grey icon */
     }
     ul.social li:nth-child(3) a::before {
       content: "\f099";              /* twitter */
       color: #1DA1F2;
       border-bottom: 4px solid #1DA1F2;
+      background: #000;  /* Ensure background covers grey icon */
     }
     ul.social li:hover a::before {
       height: 100%;
