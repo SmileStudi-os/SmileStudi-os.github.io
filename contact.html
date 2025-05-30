@@ -25,7 +25,7 @@
       font-family: 'Roboto', sans-serif;
     }
     #particles-js {
-      position: fixed;         /* fill screen */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -62,8 +62,7 @@
       margin: 6rem auto 4rem;
       max-width: 480px;
       padding: 2rem;
-      background: rgba(0,0,0,0.6);
-      border-radius: 8px;
+      /* background removed so it's transparent on the particles */
       text-align: center;
       z-index: 1;
     }
@@ -77,6 +76,7 @@
       margin-bottom: 1.5rem;
       animation: fade-in-up 0.6s ease-out 0.4s both;
     }
+
     form {
       text-align: left;
     }
@@ -95,17 +95,28 @@
       border: none;
       border-radius: 4px;
       font-size: 1rem;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
     }
+    form textarea {
+      resize: none;           /* disable manual resize */
+      height: 120px;          /* fixed height */
+    }
+
+    /* send button small, square, centered */
     form button {
       display: block;
-      width: 100%;
-      padding: 0.75rem;
+      width: 3.5rem;           /* square */
+      height: 3.5rem;
+      margin: 1rem auto 0;
       background: #03a9f4;
       color: #fff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       font-size: 1rem;
+      line-height: 3.5rem;     /* center the text vertically */
+      text-align: center;
       transition: background 0.3s;
     }
     form button:hover {
@@ -161,7 +172,7 @@
       <input type="text" id="subject" name="subject" required />
 
       <label for="message">message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <textarea id="message" name="message" required></textarea>
 
       <button type="submit">send</button>
     </form>
