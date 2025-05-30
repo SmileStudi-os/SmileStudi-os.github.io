@@ -103,6 +103,7 @@
       cursor: pointer;
       margin: 0 auto 2rem auto;
       opacity: 0;
+      pointer-events: none; /* Not clickable during animation */
       animation: card-entrance 1s ease-out 1.5s forwards;
     }
 
@@ -114,6 +115,7 @@
       to {
         opacity: 1;
         transform: translateY(0);
+        pointer-events: auto; /* Becomes clickable after animation */
       }
     }
 
