@@ -100,6 +100,8 @@
       margin: 0 auto 1.5rem auto;
       opacity: 0;
       animation: card-entrance 1s ease-out 1s forwards;
+      display: flex;
+      justify-content: center;
     }
 
     @keyframes card-entrance {
@@ -177,13 +179,16 @@
       padding: 0 20px;
       text-align: center;
       z-index: 1;
+      box-sizing: border-box;
     }
+    
     .content h1 {
       font-size: 2.5rem;
       margin-bottom: .5rem;
       opacity: 0;
       transform: translateY(-60px);
       animation: slide-in-down .6s ease-out 1.5s forwards;
+      text-align: center;
     }
     @keyframes slide-in-down {
       from { transform: translateY(-60px); opacity: 0; }
@@ -207,6 +212,8 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fade-in-up .6s ease-out 2.3s forwards;
+      max-width: 350px;
+      margin: 0 auto;
     }
     form label {
       display: block;
