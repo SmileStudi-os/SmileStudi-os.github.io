@@ -459,6 +459,11 @@
         card.querySelector('.glass-card-light').style.setProperty('--mouse-x', `${x}%`);
         card.querySelector('.glass-card-light').style.setProperty('--mouse-y', `${y}%`);
       });
+      
+      // Make card clickable to go to Roblox group
+      card.addEventListener('click', () => {
+        window.open('https://www.roblox.com/communities/35683279/Smile-Studios#!/about', '_blank');
+      });
     }
   </script>
 </body>
