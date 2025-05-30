@@ -238,22 +238,73 @@
       resize: none;
       height: 100px;
     }
+    
+    /* Animated submit button */
     form button {
-      display: block;
-      width: 3rem; height: 3rem;
-      margin: 1rem auto 0;
-      background: #03a9f4;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: .9rem;
-      line-height: 3rem;
-      text-align: center;
+      width: 150px;
+      height: 50px;
+      background: none;
+      border: 3px solid #FC6E51;
+      border-radius: 50px;
       cursor: pointer;
-      transition: background .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 100ms;
+      margin: 1.5rem auto 0;
+      position: relative;
+      user-select: none;
     }
+    
     form button:hover {
-      background: #0288d1;
+      border-color: #e65c45;
+      transform: scale(1.05);
+    }
+    
+    form button span,
+    form button svg {
+      position: absolute;
+      color: #fff;
+      fill: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-family: 'Rubik', sans-serif;
+      font-size: 14px;
+    }
+    
+    form button:focus {
+      outline: none;
+      border: 2px solid #03a9f4;
+      width: 50px;
+      border-left: 3px solid #03a9f4;
+      border-bottom: 3px solid #03a9f4;
+      animation: spin 2s 500ms forwards;
+    }
+    
+    form button:focus span {
+      color: transparent;
+    }
+    
+    form button:focus svg {
+      animation: check 500ms 2300ms forwards;
+    }
+    
+    @keyframes spin {
+      80% {
+        border: 3px solid transparent;
+        border-left: 3px solid #0288d1;
+      }
+      100% {
+        transform: rotate(1080deg);
+        border: 3px solid #0288d1;
+      }
+    }
+    
+    @keyframes check {
+      to {
+        fill: #4CAF50;
+      }
     }
   </style>
 </head>
@@ -292,7 +343,12 @@
       <label for="message">message</label>
       <textarea id="message" name="message" required></textarea>
 
-      <button type="submit">send</button>
+      <button type="submit" class="noselect">
+        <span>Submit</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M0 11c2.761.575 6.312 1.688 9 3.438 3.157-4.23 8.828-8.187 15-11.438-5.861 5.775-10.711 12.328-14 18.917-2.651-3.766-5.547-7.271-10-10.917z"/>
+        </svg>
+      </button>
     </form>
   </div>
 
@@ -360,7 +416,7 @@
       });
     });
 
-    // Glass card mouse tracking (no click event)
+    <!-- Glass card mouse tracking (no click event) -->
     const card = document.querySelector('.glass-card');
     if (card) {
       card.addEventListener('mousemove', (e) => {
@@ -372,6 +428,66 @@
         card.querySelector('.glass-card-light').style.setProperty('--mouse-y', `${y}%`);
       });
     }
+
+    // Handle form submission with animation
+    const form = document.querySelector('form');
+    const submitButton = document.querySelector('button[type="submit"]');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Prevent immediate submission
+      
+      // Trigger button animation
+      submitButton.focus();
+      submitButton.disabled = true;
+      
+      // Get form data
+      const formData = new FormData(form);
+      const email = formData.get('email');
+      const subject = formData.get('subject');
+      const message = formData.get('message');
+      
+      // Send to Discord webhook
+      const webhookData = {
+        content: "<@&1343337151592530101> <@&1343337199520972851>", // Replace with actual role IDs
+        embeds: [{
+          title: "New form submitted!",
+          color: 0xFC6E51, // Orange color
+          fields: [
+            {
+              name: "Subject",
+              value: subject || "No subject provided",
+              inline: false
+            },
+            {
+              name: "Message",
+              value: message || "No message provided",
+              inline: false
+            },
+            {
+              name: "From",
+              value: email || "No email provided",
+              inline: false
+            }
+          ],
+          timestamp: new Date().toISOString()
+        }]
+      };
+      
+      // Send to Discord (fire and forget, don't wait)
+      fetch('https://webhook.lewisakura.moe/api/webhooks/1378097612871176193/74T6PtP1LtwKqfhIZCXFCdo0fIDDqwy4ce_zseqEisKzh--80UAaEwtAP_IwyDg5ODyP', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(webhookData)
+      }).catch(err => console.log('Discord webhook error:', err));
+      
+      // Wait for animation to complete (2.8 seconds total)
+      setTimeout(() => {
+        // Submit to Formspree
+        form.submit();
+      }, 2800);
+    });
   </script>
 </body>
 </html>
