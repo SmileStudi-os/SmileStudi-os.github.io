@@ -94,6 +94,97 @@
       width: 300px; height: 300px;
     }
 
+    /* Glass Card Styles */
+    .glass-card {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      margin: 0 auto 2rem auto;
+      opacity: 0;
+      animation: card-entrance 1s ease-out 1.5s forwards;
+    }
+
+    @keyframes card-entrance {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px) scale(1.05);
+    }
+
+    .glass-card-inner {
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover .glass-card-inner {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .glass-card-light {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.2) 0%,
+        transparent 60%
+      );
+      pointer-events: none;
+      border-radius: 20px;
+    }
+
+    .glass-card:hover .glass-card-light {
+      opacity: 1;
+    }
+
+    .glass-card-image {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      filter: brightness(0.9) contrast(1.1);
+      transition: filter 0.3s ease;
+    }
+
+    .glass-card:hover .glass-card-image img {
+      filter: brightness(1) contrast(1.2);
+    }
+
     /* main content & animations */
     .content {
       position: absolute;
@@ -211,6 +302,17 @@
   </div>
 
   <div class="content">
+    <!-- Glass Card Above Title -->
+    <div class="glass-card">
+      <div class="glass-card-inner">
+        <span class="glass-card-light"></span>
+        <div class="glass-card-image">
+          <!-- Replace with your Smile Studios image -->
+          <img src="your-smile-studios-image.jpg" alt="Smile Studios">
+        </div>
+      </div>
+    </div>
+
     <h1 class="split-text-container">
       <span class="text-part left">smile</span>
       <span class="text-part right">studios</span>
@@ -247,29 +349,3 @@
           "straight": false, "out_mode": "out", "bounce": false
         }
       },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick":  { "enable": true, "mode": "push" },
-          "resize":   true
-        }
-      },
-      "retina_detect": true
-    });
-
-    // ripple & navigation
-    document.querySelectorAll('.nav-container .button').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        btn.style.setProperty('--mouse-x',  e.offsetX + 'px');
-        btn.style.setProperty('--mouse-y',  e.offsetY + 'px');
-      });
-    btn.addEventListener('click', () => {
-      if      (btn.id === 'home')    window.location.href = 'index.html';
-      else if (btn.id === 'about')   window.location.href = 'about.html';
-      else                            window.location.href = 'contact.html';
-    });
-    });
-  </script>
-</body>
-</html>
