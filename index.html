@@ -146,19 +146,6 @@
       display: inline-block;
       position: relative;  /* Added to contain the ::before element */
     }
-    ul.social li a.roblox-icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    ul.social li a.roblox-icon img {
-      width: 48px;
-      height: 48px;
-      filter: brightness(0) saturate(100%) invert(42%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(66%) contrast(100%);
-      transition: filter .3s ease;
-    }
     ul.social li a::before {
       font-family: "FontAwesome";
       position: absolute;
@@ -175,58 +162,26 @@
       justify-content: center;  /* Added to center the icon */
     }
     ul.social li:nth-child(1) a::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 0;
-      overflow: hidden;
-      transition: height .5s ease-in-out;
-      background: #000;
-      z-index: 1;
-      border-bottom: 4px solid #e42320;
-      box-sizing: border-box;
-    }
-    ul.social li:nth-child(1) a::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Roblox_Logo.svg/512px-Roblox_Logo.svg.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      filter: brightness(0) saturate(100%) invert(28%) sepia(97%) saturate(3429%) hue-rotate(349deg) brightness(88%) contrast(94%);
-      opacity: 0;
-      transition: opacity .5s ease-in-out;
-      z-index: 2;
-    }
-    ul.social li:nth-child(1) a img {
-      position: relative;
-      z-index: 0;
-    }
-    ul.social li:nth-child(1):hover a::before {
-      height: 100%;
-    }
-    ul.social li:nth-child(1):hover a::after {
-      opacity: 1;
-    }
-    ul.social li:nth-child(1):hover a::before {
-      height: 100%;
-    }
-    ul.social li:nth-child(1):hover a::after {
-      opacity: 1;
+      content: "\f16d";              /* instagram */
+      background-image: linear-gradient(45deg,
+        #f09433 0%,#e6683c 25%,#dc2743 50%,
+        #cc2366 75%,#bc1888 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;  /* Added standard property */
+      border-bottom: 4px solid #dc2743;
     }
     ul.social li:nth-child(2) a::before {
+      content: "\f232";              /* whatsapp */
+      color: #25D366;
+      border-bottom: 4px solid #25D366;
+      background: #000;  /* Ensure background covers grey icon */
+    }
+    ul.social li:nth-child(3) a::before {
       content: "\f392";              /* discord */
       color: #5865F2;
       border-bottom: 4px solid #5865F2;
       background: #000;  /* Ensure background covers grey icon */
-      box-sizing: border-box;
     }
     ul.social li:hover a::before {
       height: 100%;
@@ -244,9 +199,8 @@
 
     <!-- social icons -->
     <ul class="social">
-      <li><a href="#" class="roblox-icon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Roblox_Logo.svg/512px-Roblox_Logo.svg.png" alt="Roblox">
-      </a></li>
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+      <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
       <li><a href="#"><i class="fab fa-discord"></i></a></li>
     </ul>
   </div>
