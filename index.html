@@ -14,6 +14,7 @@
   />
   <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
+
     html, body {
       margin: 0;
       padding: 0;
@@ -24,6 +25,7 @@
       overflow: hidden;
       font-family: 'Roboto', sans-serif;
     }
+
     #particles-js {
       position: absolute;
       width: 100%;
@@ -32,16 +34,33 @@
       background-size: cover;
       background-position: 50% 50%;
     }
-    /* ---- nav buttons ---- */
+
+    /* ---- nav buttons (delayed entrance) ---- */
     .nav-container {
       position: absolute;
       top: 1rem;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(20px);
       display: flex;
       gap: 1rem;
       z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+      animation: nav-entrance 1s ease-out 2.5s forwards;
     }
+    @keyframes nav-entrance {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+        pointer-events: none;
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+      }
+    }
+
     .button-container-1,
     .button-container-2 {
       position: relative;
@@ -50,47 +69,51 @@
       overflow: hidden;
       border: 1px solid #000;
       border-radius: 8px;
-      background: #000;
+      background: #fff; /* inverted for visibility */
     }
+
     /* home page button */
     .button-container-1 button {
       width: 101%;
       height: 100%;
-      background: #000;
+      background: #fff;
       -webkit-mask: url('https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png') no-repeat;
-      mask: url('https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png') no-repeat;
+      mask:         url('https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png') no-repeat;
       -webkit-mask-size: 2300% 100%;
-      mask-size: 2300% 100%;
+      mask-size:         2300% 100%;
       border: none;
-      color: #fff;
+      color: #000;
       cursor: pointer;
       animation: home-reset 0.7s steps(22) forwards;
     }
     .button-container-1 button:hover {
       animation: home-anim 0.7s steps(22) forwards;
     }
+
     /* contact us button */
     .button-container-2 button {
       width: 101%;
       height: 100%;
-      background: #000;
+      background: #fff;
       -webkit-mask: url('https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png') no-repeat;
-      mask: url('https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png') no-repeat;
+      mask:         url('https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png') no-repeat;
       -webkit-mask-size: 3000% 100%;
-      mask-size: 3000% 100%;
+      mask-size:         3000% 100%;
       border: none;
-      color: #fff;
+      color: #000;
       cursor: pointer;
       animation: contact-reset 0.7s steps(29) forwards;
     }
     .button-container-2 button:hover {
       animation: contact-anim 0.7s steps(29) forwards;
     }
+
     @keyframes home-anim    { from { mask-position: 0 0; }    to { mask-position: 100% 0; } }
     @keyframes home-reset   { from { mask-position: 100% 0; }  to { mask-position: 0 0;   } }
     @keyframes contact-anim { from { mask-position: 0 0; }    to { mask-position: 100% 0; } }
     @keyframes contact-reset{ from { mask-position: 100% 0; }  to { mask-position: 0 0;   } }
 
+    /* ---- main content & animations ---- */
     .content {
       position: absolute;
       top: 50%;
@@ -100,6 +123,7 @@
       text-align: center;
       padding: 0 20px;
     }
+
     .split-text-container {
       display: flex;
       justify-content: center;
@@ -110,6 +134,7 @@
       overflow: hidden;
       margin: 0;
     }
+
     .text-part {
       display: inline-block;
       position: relative;
@@ -126,15 +151,14 @@
       animation-name: slide-in-right;
       animation-delay: .3s;
     }
-    @keyframes slide-in-left { from { transform: translateX(-200%); } to { transform: translateX(0); } }
-    @keyframes slide-in-right{ from { transform: translateX(200%); }  to { transform: translateX(0); } }
+    @keyframes slide-in-left  { from { transform: translateX(-200%); } to { transform: translateX(0); } }
+    @keyframes slide-in-right { from { transform: translateX(200%); }  to { transform: translateX(0); } }
+
     .motto {
       font-size: 1.2rem;
       font-weight: 300;
       color: #ccc;
-      margin: 0;
-      margin-top: .5rem;
-      margin-bottom: 1.5rem;
+      margin: .5rem 0 1.5rem;
       opacity: 0;
       transform: translateY(20px);
       animation: fade-in-up 1s ease-out 2.3s forwards;
@@ -143,6 +167,8 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0);    }
     }
+
+    /* 3D button CSS (unchanged) */
     a.btn-3d {
       position: relative;
       display: inline-block;
@@ -159,8 +185,10 @@
     }
     a.btn-3d span {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -178,11 +206,12 @@
       background: rgba(3,169,244,.8);
       color: #fff;
     }
-    a.btn-3d span:nth-child(1){ transform: rotateX(360deg) translateZ(25px); }
-    a.btn-3d span:nth-child(2){ transform: rotateX(270deg) translateZ(25px); }
-    a.btn-3d span:nth-child(3){ transform: rotateX(180deg) translateZ(25px); }
-    a.btn-3d span:nth-child(4){ transform: rotateX(90deg)  translateZ(25px); }
+    a.btn-3d span:nth-child(1) { transform: rotateX(360deg) translateZ(25px); }
+    a.btn-3d span:nth-child(2) { transform: rotateX(270deg) translateZ(25px); }
+    a.btn-3d span:nth-child(3) { transform: rotateX(180deg) translateZ(25px); }
+    a.btn-3d span:nth-child(4) { transform: rotateX(90deg) translateZ(25px); }
 
+    /* social-icon hover-reveal */
     ul.social {
       margin: 0;
       padding: 0;
@@ -256,15 +285,11 @@
 
     <!-- Discord icon only -->
     <ul class="social">
-      <li>
-        <a href="https://discord.gg/6jGB9nqkgR" target="_blank">
-          <i class="fab fa-discord"></i>
-        </a>
-      </li>
+      <li><a href="https://discord.gg/6jGB9nqkgR" target="_blank"><i class="fab fa-discord"></i></a></li>
     </ul>
   </div>
 
-  <!-- particles.js -->
+  <!-- particles.js library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   <script>
     particlesJS('particles-js', {
