@@ -4,55 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smile Studios</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(270deg, #00f7ff, #111, #00f7ff);
-      background-size: 600% 600%;
-      animation: moveBackground 15s linear infinite;
-      color: #fff;
-      font-family: sans-serif;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @keyframes moveBackground {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    h1 {
-      font-size: 3em;
-      margin: 0.2em;
-    }
-
-    p {
-      font-size: 1.2em;
-    }
-
-    a {
-      color: #00f7ff;
-      text-decoration: none;
-      border: 1px solid #00f7ff;
-      padding: 0.5em 1em;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    a:hover {
-      background: #00f7ff;
-      color: #111;
-    }
-  </style>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/demo4.css">
 </head>
-<body>
-  <h1>Smile Studios</h1>
+<body class="demo-4">
+  <h1 class="content__title">Smile Studios</h1>
   <p>Creating innovative Roblox games for the future.</p>
   <p><a href="https://www.roblox.com/communities/35683279/Smile-Studios#!/about">Join us on Roblox</a></p>
+
+  <script src="js/noise.min.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/coalesce.js"></script>
 </body>
 </html>
