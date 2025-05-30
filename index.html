@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smile Studios</title>
-  <!-- fontawesome -->
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -124,11 +124,12 @@
     a.btn-3d span:nth-child(3) { transform: rotateX(180deg) translateZ(25px); }
     a.btn-3d span:nth-child(4) { transform: rotateX(90deg) translateZ(25px); }
 
-    /* social-icon hover‐reveal */
+    /* social icons with centered hover-reveal */
     ul.social {
       margin-top: 2rem;
       display: flex;
       justify-content: center;
+      padding: 0;
     }
     ul.social li {
       position: relative;
@@ -137,23 +138,29 @@
       cursor: pointer;
     }
     ul.social li a {
-      text-decoration: none;
+      position: relative;
+      display: inline-block;
       color: #222;
       font-size: 3rem;
-      display: inline-block;
     }
     ul.social li a::before {
+      content: "";
       font-family: "FontAwesome";
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 3rem;
-      height: 0;
-      overflow: hidden;
-      transition: height .5s ease-in-out;
+      transform: scaleY(0);
+      transform-origin: center center;
+      transition: transform .5s ease-in-out;
     }
     ul.social li:nth-child(1) a::before {
-      content: "\f16d";              /* instagram */
+      content: "\f16d"; /* instagram */
       background-image: linear-gradient(45deg,
         #f09433 0%,#e6683c 25%,#dc2743 50%,
         #cc2366 75%,#bc1888 100%);
@@ -162,17 +169,17 @@
       border-bottom: 4px solid #dc2743;
     }
     ul.social li:nth-child(2) a::before {
-      content: "\f232";              /* whatsapp */
+      content: "\f232"; /* whatsapp */
       color: #25D366;
       border-bottom: 4px solid #25D366;
     }
     ul.social li:nth-child(3) a::before {
-      content: "\f099";              /* twitter */
+      content: "\f099"; /* twitter */
       color: #1DA1F2;
       border-bottom: 4px solid #1DA1F2;
     }
     ul.social li:hover a::before {
-      height: 100%;
+      transform: scaleY(1);
     }
   </style>
 </head>
@@ -187,15 +194,12 @@
     <a href="https://www.roblox.com/communities/35683279/Smile-Studios#!/about" class="btn-3d">
       <span>join us</span><span>join us</span><span>join us</span><span>join us</span>
     </a>
-
-    <!-- social icons -->
     <ul class="social">
       <li><a href="#"><i class="fab fa-instagram"></i></a></li>
       <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
       <li><a href="#"><i class="fab fa-twitter"></i></a></li>
     </ul>
   </div>
-
   <script src="particles.min.js"></script>
   <script>
     particlesJS.load('particles-js','particles.json',function(){});
