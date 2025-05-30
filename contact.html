@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – Smile Studios</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    /* copy your entire <style> block from index.html here */
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <!-- nav buttons -->
+  <div class="nav-container">
+    <div class="button-container-1">
+      <button onclick="window.location.href='index.html'">home page</button>
+    </div>
+    <div class="button-container-2">
+      <button onclick="window.location.href='contact.html'">contact us</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <h1>get in touch</h1>
+    <p>have questions or ideas? drop us a line below.</p>
+    <!-- simple mailto form -->
+    <form action="mailto:hello@smilestudios.com" method="post" enctype="text/plain" style="max-width:400px;margin:2rem auto;text-align:left;">
+      <label for="name">your name</label><br/>
+      <input type="text" id="name" name="name" style="width:100%;padding:.5rem;margin-bottom:1rem;" required /><br/>
+      <label for="email">your email</label><br/>
+      <input type="email" id="email" name="email" style="width:100%;padding:.5rem;margin-bottom:1rem;" required /><br/>
+      <label for="message">message</label><br/>
+      <textarea id="message" name="message" rows="5" style="width:100%;padding:.5rem;margin-bottom:1rem;" required></textarea><br/>
+      <button type="submit" style="padding:.75rem 1.5rem;border:none;background:#03a9f4;color:#fff;border-radius:4px;cursor:pointer;">
+        send
+      </button>
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    /* copy your particlesJS init from index.html here */
+  </script>
+</body>
+</html>
