@@ -174,10 +174,6 @@
       align-items: center;  /* Added to center the icon */
       justify-content: center;  /* Added to center the icon */
     }
-    ul.social li:nth-child(1) a {
-      position: relative;
-      overflow: hidden;
-    }
     ul.social li:nth-child(1) a::before {
       content: "";
       position: absolute;
@@ -190,6 +186,8 @@
       transition: height .5s ease-in-out;
       background: #000;
       z-index: 1;
+      border-bottom: 4px solid #e42320;
+      box-sizing: border-box;
     }
     ul.social li:nth-child(1) a::after {
       content: "";
@@ -228,6 +226,7 @@
       color: #5865F2;
       border-bottom: 4px solid #5865F2;
       background: #000;  /* Ensure background covers grey icon */
+      box-sizing: border-box;
     }
     ul.social li:hover a::before {
       height: 100%;
