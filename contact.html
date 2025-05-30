@@ -8,32 +8,28 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-
   <style>
-    /* — global & particles — */
+    /* global & particles */
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       background: #000;
       color: #fff;
-      overflow-y: auto;        /* allow scrolling */
+      overflow-y: auto;
       font-family: 'Roboto', sans-serif;
     }
     #particles-js {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;             /* behind everything */
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
     }
 
-    /* — nav buttons — */
+    /* nav buttons */
     .nav-container {
       position: absolute;
       top: 1.5rem;
@@ -56,13 +52,12 @@
       background: rgba(255,255,255,0.2);
     }
 
-    /* — main content & form — */
+    /* main content & form (transparent) */
     .content {
       position: relative;
       margin: 6rem auto 4rem;
       max-width: 480px;
-      padding: 2rem;
-      /* background removed so it's transparent on the particles */
+      padding: 0;         /* no inner background padding */
       text-align: center;
       z-index: 1;
     }
@@ -92,30 +87,30 @@
       width: 100%;
       padding: 0.6rem;
       margin-bottom: 1rem;
-      border: none;
+      border: 1px solid rgba(255,255,255,0.3);
       border-radius: 4px;
       font-size: 1rem;
-      background: rgba(255,255,255,0.05);
+      background: rgba(0,0,0,0.4);  /* see-through so particles show */
       color: #fff;
     }
     form textarea {
-      resize: none;           /* disable manual resize */
-      height: 120px;          /* fixed height */
+      resize: none;
+      height: 120px;
     }
 
     /* send button small, square, centered */
     form button {
       display: block;
-      width: 3.5rem;           /* square */
-      height: 3.5rem;
+      width: 3rem;
+      height: 3rem;
       margin: 1rem auto 0;
       background: #03a9f4;
       color: #fff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 1rem;
-      line-height: 3.5rem;     /* center the text vertically */
+      font-size: 0.9rem;
+      line-height: 3rem;
       text-align: center;
       transition: background 0.3s;
     }
@@ -123,44 +118,27 @@
       background: #0288d1;
     }
 
-    /* — any additional CSS from your index.html — */
-    /* mask-animation, split-text-container, .text-part, btn-3d, social styles, etc. */
-    /* … */
-
-    /* — simple keyframes — */
+    /* keyframes */
     @keyframes slide-in-down {
-      0% {
-        transform: translateY(-60px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(-60px); opacity: 0; }
+      100% { transform: translateY(0);   opacity: 1; }
     }
     @keyframes fade-in-up {
-      0% {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(20px);  opacity: 0; }
+      100% { transform: translateY(0);    opacity: 1; }
     }
+
+    /* …add your other CSS (mask-animation, split-text, btn-3d, social, etc.) here… */
   </style>
 </head>
 <body>
-  <!-- particles background -->
   <div id="particles-js"></div>
 
-  <!-- nav -->
   <div class="nav-container">
     <button onclick="location.href='index.html'">home page</button>
     <button onclick="location.href='contact.html'">contact us</button>
   </div>
 
-  <!-- content -->
   <div class="content">
     <h1>get in touch</h1>
     <p>have questions or ideas? drop us a line below.</p>
@@ -178,41 +156,30 @@
     </form>
   </div>
 
-  <!-- particles.js lib & init -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   <script>
     particlesJS('particles-js', {
       "particles": {
         "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
         "color": { "value": "#ffffff" },
-        "shape": {
-          "type": "circle",
-          "stroke": { "width": 0, "color": "#000000" }
-        },
-        "opacity": { "value": 0.5, "random": false },
-        "size": { "value": 3, "random": true },
+        "shape": { "type": "circle","stroke": {"width":0,"color":"#000000"} },
+        "opacity": { "value":0.5,"random":false },
+        "size": { "value":3,"random":true },
         "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
+          "enable":true,"distance":150,
+          "color":"#ffffff","opacity":0.4,"width":1
         },
         "move": {
-          "enable": true,
-          "speed": 6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
+          "enable":true,"speed":6,
+          "direction":"none","random":false,
+          "straight":false,"out_mode":"out","bounce":false
         }
       },
       "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick":  { "enable": true, "mode": "push" },
+        "detect_on":"canvas",
+        "events":{
+          "onhover": {"enable":true,"mode":"repulse"},
+          "onclick":  {"enable":true,"mode":"push"},
           "resize":   true
         }
       },
